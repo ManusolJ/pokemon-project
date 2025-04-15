@@ -1,17 +1,28 @@
 <nav
-  class="navbar bg-base-100 shadow-sm relative min-w-[380px] max-w-[1440px] mx-auto rounded-b-box mb-5"
+  class="navbar bg-base-100 shadow-sm relative max-w-[1440px] mx-auto px-5 mb-5 rounded-b-box"
 >
-  <div class="navbar-start">
+  <!-- Mobile Menu (Left on mobile) -->
+  <div class="navbar-start lg:hidden w-2/12 justify-center">
     <app-mobile-link-menu />
   </div>
 
-  <div class="navbar-center flex">
+  <!-- Desktop Logo (Left on desktop) -->
+  <div class="navbar-start hidden lg:flex w-1/3">
     <app-logo />
+  </div>
+
+  <!-- Desktop Menu (Center on desktop) -->
+  <div class="navbar-center hidden lg:flex">
     <app-desktop-link-menu />
   </div>
 
-  <!-- Navbar End: Action Buttons -->
-  <div class="navbar-end">
+  <!-- Mobile Logo (Center on mobile) -->
+  <div class="navbar-center lg:hidden w-8/12 justify-center">
+    <app-logo />
+  </div>
+
+  <!-- Profile Buttons (Right) -->
+  <div class="navbar-end w-2/12 lg:w-1/3">
     <app-nav-profile />
   </div>
 </nav>
