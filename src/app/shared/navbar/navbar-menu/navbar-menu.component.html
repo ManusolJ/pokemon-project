@@ -1,0 +1,13 @@
+<ul class="menu menu-horizontal gap-3 hidden lg:flex">
+  @for(link of links; track $index){
+  <li>
+    <a
+      [routerLink]="link.link"
+      class="btn btn-ghost text-black text-lg font-bold transition-transform duration-200 hover:!text-[#DC143C] hover:-translate-y-0.5"
+      routerLinkActive="!text-[#D32F2F] underline"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >{{ link.name }}</a
+    >
+  </li>
+  }
+</ul>

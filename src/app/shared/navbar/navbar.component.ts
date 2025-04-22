@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
-import { MobileLinkMenuComponent } from './mobile-link-menu/mobile-link-menu.component';
-import { DesktopLinkMenuComponent } from './desktop-link-menu/desktop-link-menu.component';
-import { LogoComponent } from './nav-logo/logo.component';
-import { NavProfileComponent } from './nav-profile/nav-profile.component';
+import { NavbarMenuComponent } from './navbar-menu/navbar-menu.component';
+import { NavbarLogoComponent } from './navbar-logo/navbar-logo.component';
+import { NavbarAccountComponent } from './navbar-account/navbar-account.component';
+import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
 
 @Component({
   selector: 'app-navbar',
   imports: [
-    MobileLinkMenuComponent,
-    DesktopLinkMenuComponent,
-    LogoComponent,
-    NavProfileComponent,
+    NavbarMenuComponent,
+    NavbarLogoComponent,
+    NavbarAccountComponent,
+    NavbarMobileMenuComponent,
   ],
   templateUrl: './navbar.component.html',
 })
