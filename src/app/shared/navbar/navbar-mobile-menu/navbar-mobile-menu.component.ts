@@ -14,6 +14,5 @@ export class NavbarMobileMenuComponent {
 
   displayMenu() {
     this.isMenuDisplayed.update((v) => !v);
-    console.log(this.isMenuDisplayed());
   }
 }

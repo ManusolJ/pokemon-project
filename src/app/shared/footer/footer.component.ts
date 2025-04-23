@@ -1,8 +1,16 @@
-import { Component } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [RouterLink, NgClass],
   templateUrl: './footer.component.html',
 })
-export class FooterComponent {}
+export class FooterComponent {
+  isFooterDisplayed = signal<boolean>(false);
+
+  displayFooter() {
+    this.isFooterDisplayed.update((v) => !v);
+  }
+}
