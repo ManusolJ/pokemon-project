@@ -1,7 +1,7 @@
 <footer
   class="footer footer-horizontal footer-center bg-base-300 text-base-content relative p-6 transition-transform duration-500 ease-in-out"
   [ngClass]="{
-    'translate-y-46  sm:translate-y-40 md:translate-y-36':
+    'translate-y-46 min-[416px]:translate-y-42 sm:translate-y-40 md:translate-y-36':
       !this.isFooterDisplayed(),
     'translate-y-0': this.isFooterDisplayed()
   }"
@@ -16,7 +16,7 @@
   </div>
 
   <div>
-    <p class="font-bold text-lg">
+    <p class="font-bold text-lg mb-5 md:mb-0">
       Pokémon TeamBuilder © 2025 - All rights reserved
     </p>
     <div class="text-center">
@@ -37,7 +37,7 @@
       <p class="text-sm">
         <a routerLink="/about" class="link link-hover">About us</a>
         <span> | </span>
-        <a routerLink="/terms-of-use" class="link link-hover">Terms of Use</a>
+        <a routerLink="/terms" class="link link-hover">Terms of Use</a>
       </p>
 
       <p class="text-xs mt-2 max-w-md mx-auto">

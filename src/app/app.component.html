@@ -1,7 +1,15 @@
-<main class="flex flex-col min-h-screen overflow-hidden">
+<main class="flex flex-col min-h-screen overflow-hidden relative">
   <app-navbar />
-  <section class="flex grow">
-    <router-outlet />
+  <section class="flex grow pb-20 z-0">
+    <div class="grow">
+      <div
+        class="h-full w-full max-w-11/12 mx-auto bg-[#F1E7E7] rounded-sm p-5"
+      >
+        <router-outlet />
+      </div>
+    </div>
   </section>
-  <app-footer />
+  <div class="absolute bottom-0 left-0 right-0 z-10">
+    <app-footer />
+  </div>
 </main>
