@@ -6,5 +6,5 @@ import { Component, output } from '@angular/core';
   templateUrl: './navbar-account.component.html',
 })
 export class NavbarAccountComponent {
-  sendOpenSignal = output();
+  openAuthModal = output<boolean>();
 }

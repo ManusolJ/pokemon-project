@@ -14,10 +14,12 @@
   </div>
 
   <div class="navbar-end">
-    <app-navbar-account (sendOpenSignal)="openLogin()" />
+    <app-navbar-account (openAuthModal)="openModal($event)" />
   </div>
 </nav>
 
-@if(showLogin()){
-<app-login-page (closeModal)="closeLogin()" />
-}
+<app-auth-modal-page
+  [modalState]="modalState()"
+  [isRegisterModal]="isRegisterModal()"
+  (closeModal)="closeModal()"
+/>

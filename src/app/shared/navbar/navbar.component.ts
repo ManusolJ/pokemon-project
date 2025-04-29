@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { NavbarMenuComponent } from './navbar-menu/navbar-menu.component';
+import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
 import { NavbarLogoComponent } from './navbar-logo/navbar-logo.component';
 import { NavbarAccountComponent } from './navbar-account/navbar-account.component';
-import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
-import { LoginPageComponent } from '../../core/auth/pages/login-page/login-page.component';
-import { RegisterPageComponent } from '../../core/auth/pages/register-page/register-page.component';
+import { AuthModalPageComponent } from '@auth/authModalPage/authModalPage.component';
 
 @Component({
   selector: 'app-navbar',
@@ -13,19 +12,20 @@ import { RegisterPageComponent } from '../../core/auth/pages/register-page/regis
     NavbarLogoComponent,
     NavbarAccountComponent,
     NavbarMobileMenuComponent,
-    LoginPageComponent,
-    RegisterPageComponent,
+    AuthModalPageComponent,
   ],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  showLogin = signal<boolean>(false);
+  isRegisterModal = signal(true);
+  modalState = signal(false);
 
-  openLogin() {
-    this.showLogin.set(true);
+  openModal(isRegister: boolean) {
+    this.isRegisterModal.set(isRegister);
+    this.modalState.set(true);
   }
 
-  closeLogin() {
-    this.showLogin.set(false);
+  closeModal() {
+    this.modalState.set(false);
   }
 }

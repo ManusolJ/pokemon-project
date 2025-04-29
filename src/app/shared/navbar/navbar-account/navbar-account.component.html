@@ -1,12 +1,13 @@
 <div class="gap-2 hidden lg:flex">
   <button
     class="btn btn-accent text-xs transition-transform duration-200 hover:-translate-y-0.5 w-1/2"
+    (click)="openAuthModal.emit(true)"
   >
     Sign Up
   </button>
   <button
     class="btn btn-error transition-transform duration-200 hover:-translate-y-0.5 w-1/2"
-    (click)="sendOpenSignal.emit()"
+    (click)="openAuthModal.emit(false)"
   >
     Login
   </button>
@@ -16,7 +17,7 @@
   <div
     tabindex="0"
     role="button"
-    class="btn btn-ghost m-1 text-black border-black border-2 hover:text-white"
+    class="btn bg-white m-1 text-black border-black border-2 hover:text-white hover:bg-black"
   >
     <i class="fa-solid fa-user"></i>
   </div>
@@ -24,7 +25,15 @@
     tabindex="0"
     class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm gap-2"
   >
-    <li><button class="btn btn-accent btn-sm">Sign Up</button></li>
-    <li><button class="btn btn-error btn-sm">Login</button></li>
+    <li>
+      <button class="btn btn-accent btn-sm" (click)="openAuthModal.emit(true)">
+        Sign Up
+      </button>
+    </li>
+    <li>
+      <button class="btn btn-error btn-sm" (click)="openAuthModal.emit(false)">
+        Login
+      </button>
+    </li>
   </ul>
 </div>

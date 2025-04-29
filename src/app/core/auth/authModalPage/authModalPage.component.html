@@ -1,0 +1,158 @@
+<div
+  class="bg-black w-screen h-screen fixed inset-0 z-40 transition-opacity duration-500 ease-in-out opacity-0"
+  [ngClass]="{
+    'opacity-40': modalState(),
+    'opacity-0 pointer-events-none': !modalState()
+  }"
+  (click)="onClose()"
+></div>
+
+<div
+  class="card w-96 bg-base-100 shadow-2xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-300 ease-out will-change-transform border-2 border-primary/20"
+  [ngClass]="{
+    'scale-100 opacity-100': modalState(),
+    'scale-95 opacity-0 pointer-events-none': !modalState()
+  }"
+>
+  <div class="relative">
+    <div
+      class="absolute -top-12 left-1/2 -translate-x-1/2 w-20 h-20 bg-red-600 rounded-full border-6 border-black shadow-lg overflow-hidden"
+    >
+      <div
+        class="absolute top-1/2 left-0 right-0 h-12 bg-white border-t-4 border-stone-500"
+      ></div>
+      <div
+        class="absolute top-1/2 left-1/2 -translate-1/2 w-6 h-6 bg-base-100 rounded-full border-4 border-stone-500"
+      ></div>
+    </div>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      class="card-body space-y-6 pt-16"
+    >
+      <h2 class="text-3xl font-bold text-center font-press text-primary">
+        Gotta Catch 'Em All!
+      </h2>
+
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text text-lg font-semibold text-white"
+            >Trainer ID</span
+          >
+        </div>
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="Username"
+          class="input input-lg input-bordered input-primary w-full"
+        />
+        @if( form.get('username')?.invalid && form.get('username')?.touched){
+        <div class="label">
+          <span class="label-text-alt text-error font-bold animate-pulse">
+            <i class="fa-solid fa-exclamation-circle mr-1"></i>Trainer ID
+            required!
+          </span>
+        </div>
+        }
+      </label>
+
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text text-lg font-semibold text-white"
+            >Secret Code</span
+          >
+        </div>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          class="input input-lg input-bordered input-secondary w-full"
+        />
+        @if( form.get('password')?.invalid && form.get('password')?.touched){
+        <div class="label">
+          <span class="label-text-alt text-error font-bold animate-pulse">
+            <i class="fa-solid fa-exclamation-circle mr-1"></i>6+ characters
+            required!
+          </span>
+        </div>
+        }
+      </label>
+
+      @if(registerStatus()){
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text text-lg font-semibold text-white"
+            >Secret Code</span
+          >
+        </div>
+        <input
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Confirm your password"
+          class="input input-lg input-bordered input-secondary w-full"
+        />
+        @if( form.get('confirmPassword')?.invalid &&
+        form.get('confirmPassword')?.touched){
+        <div class="label">
+          <span class="label-text-alt text-error font-bold animate-pulse">
+            <i class="fa-solid fa-exclamation-circle mr-1"></i>6+ characters
+            required!
+          </span>
+        </div>
+        }
+      </label>
+      }
+
+      <div class="card-actions justify-between mt-6">
+        <div class="flex flex-col group">
+          @if(!registerStatus()){
+          <span class="text-sm text-white font-semibold">New Trainer?</span>
+          <span
+            class="flex items-center gap-2 cursor-pointer text-primary"
+            (click)="onClose()"
+          >
+            <i
+              class="fa-solid fa-arrow-left-long transition-transform group-hover:-translate-x-1"
+            ></i>
+            <span class="font-bold underline-offset-4 hover:underline"
+              >Start Journey!</span
+            >
+          </span>
+          }@else{
+          <span class="text-sm text-white font-semibold"
+            >Already registered?</span
+          >
+          <span
+            class="flex items-center gap-2 cursor-pointer text-primary"
+            (click)="onClose()"
+          >
+            <span class="font-bold underline-offset-4 hover:underline"
+              >Get Started!</span
+            >
+            <i
+              class="fa-solid fa-arrow-right-long transition-transform group-hover:translate-x-1"
+            ></i>
+          </span>
+          }
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-lg btn-accent transition-transform duration-200 hover:-translate-y-1"
+          [disabled]="form.invalid"
+        >
+          Login
+        </button>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm absolute top-4 right-4"
+        (click)="onClose()"
+      >
+        <i class="fa-solid fa-xmark fa-lg"></i>
+      </button>
+    </form>
+  </div>
+</div>
