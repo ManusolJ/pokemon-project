@@ -48,7 +48,7 @@ export class AuthModalPageComponent {
     }
   });
 
-  //TODO: Finish submit form
+  //TODO: Implement Service
   onSubmit() {
     if (!this.registerStatus()) {
       console.log('Login submitted succesfukky!');

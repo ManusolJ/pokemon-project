@@ -1,0 +1,26 @@
+<div class="card bg-base-100 shadow-xl">
+  <div class="card-body relative">
+    <h2 class="card-title capitalize mx-auto">Test</h2>
+    <div class="flex flex-col items-center gap-3">
+      <img [src]="imageLink" alt="Pokemon sprite" class="w-24 h-24" />
+      <div class="flex gap-2">
+        <span
+          class="badge badge-lg badge-outline px-4 py-2 text-sm capitalize text-white font-bold bg-red-500"
+        >
+          Fire
+        </span>
+        <span
+          class="badge badge-lg badge-outline px-4 py-2 text-sm capitalize text-white font-bold bg-sky-500"
+        >
+          Flying
+        </span>
+      </div>
+      <div class="flex gap-4">
+        <button class="btn btn-primary btn-sm">Detailed view</button>
+        <button class="btn btn-error btn-sm">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
