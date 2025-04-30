@@ -21,9 +21,9 @@ import {
 })
 export class AuthModalPageComponent {
   modalState = model<boolean>();
-  closeModal = output();
   isRegisterModal = input(false);
   registerStatus = computed(() => this.isRegisterModal());
+  changeModal = output<boolean>();
 
   form: FormGroup;
 
@@ -34,7 +34,7 @@ export class AuthModalPageComponent {
     });
   }
 
-  changeModal = effect(() => {
+  changeForm = effect(() => {
     if (this.isRegisterModal()) {
       const confirmPassword = new FormControl('', [
         Validators.required,
@@ -48,6 +48,7 @@ export class AuthModalPageComponent {
     }
   });
 
+  //TODO: Finish submit form
   onSubmit() {
     if (!this.registerStatus()) {
       console.log('Login submitted succesfukky!');
@@ -58,8 +59,8 @@ export class AuthModalPageComponent {
     }
   }
 
-  onClose() {
-    this.closeModal.emit();
+  onClose(isChangeFromModal: boolean) {
+    this.changeModal.emit(isChangeFromModal);
     setTimeout(() => {
       if (this.form) {
         this.form.reset();

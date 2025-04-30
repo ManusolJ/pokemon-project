@@ -16,7 +16,7 @@ export const routes: Routes = [
   {
     path: 'team-builder',
     loadComponent: () =>
-      import('./team/pages/team-builder/team-builder.component'),
+      import('./team/pages/builder-page/team-builder.component'),
   },
   {
     path: 'teams',

@@ -18,6 +18,7 @@ import { AuthModalPageComponent } from '@auth/authModalPage/authModalPage.compon
 })
 export class NavbarComponent {
   isRegisterModal = signal(true);
+  isChangingModal = signal(false);
   modalState = signal(false);
 
   openModal(isRegister: boolean) {
@@ -25,7 +26,17 @@ export class NavbarComponent {
     this.modalState.set(true);
   }
 
-  closeModal() {
-    this.modalState.set(false);
+  closeModal(isChange: boolean) {
+    if (isChange) {
+      this.isChangingModal.set(true);
+      this.modalState.set(false);
+      setTimeout(() => {
+        this.isRegisterModal.update((v) => !v);
+        this.modalState.set(true);
+        this.isChangingModal.set(false);
+      }, 550);
+    } else {
+      this.modalState.set(false);
+    }
   }
 }

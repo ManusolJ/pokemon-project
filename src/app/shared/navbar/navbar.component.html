@@ -14,12 +14,15 @@
   </div>
 
   <div class="navbar-end">
-    <app-navbar-account (openAuthModal)="openModal($event)" />
+    <app-navbar-account
+      (openAuthModal)="openModal($event)"
+      [isChangingModal]="isChangingModal()"
+    />
   </div>
 </nav>
 
 <app-auth-modal-page
   [modalState]="modalState()"
   [isRegisterModal]="isRegisterModal()"
-  (closeModal)="closeModal()"
+  (changeModal)="closeModal($event)"
 />

@@ -4,7 +4,7 @@
     'opacity-40': modalState(),
     'opacity-0 pointer-events-none': !modalState()
   }"
-  (click)="onClose()"
+  (click)="onClose(false)"
 ></div>
 
 <div
@@ -110,7 +110,7 @@
           <span class="text-sm text-white font-semibold">New Trainer?</span>
           <span
             class="flex items-center gap-2 cursor-pointer text-primary"
-            (click)="onClose()"
+            (click)="onClose(true)"
           >
             <i
               class="fa-solid fa-arrow-left-long transition-transform group-hover:-translate-x-1"
@@ -125,7 +125,7 @@
           >
           <span
             class="flex items-center gap-2 cursor-pointer text-primary"
-            (click)="onClose()"
+            (click)="onClose(true)"
           >
             <span class="font-bold underline-offset-4 hover:underline"
               >Get Started!</span
@@ -149,7 +149,7 @@
       <button
         type="button"
         class="btn btn-secondary btn-sm absolute top-4 right-4"
-        (click)="onClose()"
+        (click)="onClose(false)"
       >
         <i class="fa-solid fa-xmark fa-lg"></i>
       </button>

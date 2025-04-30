@@ -2,12 +2,14 @@
   <button
     class="btn btn-accent text-xs transition-transform duration-200 hover:-translate-y-0.5 w-1/2"
     (click)="openAuthModal.emit(true)"
+    [class.pointer-events-none]="isChangingModal()"
   >
     Sign Up
   </button>
   <button
     class="btn btn-error transition-transform duration-200 hover:-translate-y-0.5 w-1/2"
     (click)="openAuthModal.emit(false)"
+    [class.pointer-events-none]="isChangingModal()"
   >
     Login
   </button>
@@ -26,12 +28,20 @@
     class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm gap-2"
   >
     <li>
-      <button class="btn btn-accent btn-sm" (click)="openAuthModal.emit(true)">
+      <button
+        class="btn btn-accent btn-sm"
+        (click)="openAuthModal.emit(true)"
+        [class.pointer-events-none]="isChangingModal()"
+      >
         Sign Up
       </button>
     </li>
     <li>
-      <button class="btn btn-error btn-sm" (click)="openAuthModal.emit(false)">
+      <button
+        class="btn btn-error btn-sm"
+        (click)="openAuthModal.emit(false)"
+        [class.pointer-events-none]="isChangingModal()"
+      >
         Login
       </button>
     </li>
