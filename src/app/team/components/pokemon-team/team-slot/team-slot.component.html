@@ -1,0 +1,25 @@
+<div
+  class="bg-white text-black rounded-xl shadow-md p-2 flex flex-col items-center border border-gray hover:shadow-lg transition-all duration-200 indicator relative"
+>
+  <div
+    class="w-full h-12 flex items-center justify-center border-2 border-dashed border-red-500 rounded-md cursor-pointer animate-pulse"
+  >
+    <i class="fa-solid fa-plus text-4xl text-gray-400"></i>
+  </div>
+
+  @if(pokemon()){
+  <div class="text-center">
+    <p class="font-bold text-sm">Pokemon Name</p>
+    <div class="flex flex-col justify-center gap-2 text-sm mt-1">
+      <span class="bg-blue-200 text-blue-800 px-2 py-0.5 rounded">Type 1</span>
+      <span class="bg-green-200 text-blue-800 px-2 py-0.5 rounded">Type 2</span>
+    </div>
+  </div>
+  }
+  <button
+    class="btn btn-secondary btn-xs absolute -top-2.5 -right-2.5"
+    (click)="send()"
+  >
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>

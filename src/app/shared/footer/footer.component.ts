@@ -12,5 +12,6 @@ export class FooterComponent {
 
   displayFooter() {
     this.isFooterDisplayed.update((v) => !v);
+    console.log('Updated');
   }
 }

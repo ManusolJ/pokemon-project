@@ -1,49 +1,61 @@
 <footer
-  class="footer footer-horizontal footer-center bg-base-300 text-base-content relative p-6 transition-transform duration-500 ease-in-out"
+  class="p-6"
   [ngClass]="{
     'translate-y-46 min-[416px]:translate-y-42 sm:translate-y-40 md:translate-y-36':
       !this.isFooterDisplayed(),
     'translate-y-0': this.isFooterDisplayed()
   }"
+></footer>
+
+<footer
+  class="footer footer-horizontal footer-center bg-base-300 text-base-content transition-all duration-500 ease-in-out p-4 fixed left-0 right-0"
+  [ngClass]="{
+    'bottom-0': isFooterDisplayed(),
+    '-bottom-34': !isFooterDisplayed()
+  }"
 >
-  <div class="absolute -top-5 left-1/2 -translate-x-1/2">
-    <button class="btn btn-circle" (click)="displayFooter()">
-      <i
-        class="fa-solid fa-chevron-up transition-transform duration-400 ease-in-out"
-        [class.rotate-180]="isFooterDisplayed()"
-      ></i>
-    </button>
-  </div>
+  <div class="relative">
+    <div class="absolute -top-9 left-1/2 -translate-x-1/2 z-50">
+      <button
+        class="btn btn-circle swap swap-rotate"
+        (click)="displayFooter()"
+        [class.swap-active]="isFooterDisplayed()"
+      >
+        <i class="fa-solid fa-chevron-up swap-off"></i>
+        <i class="fa-solid fa-chevron-down swap-on"></i>
+      </button>
+    </div>
 
-  <div>
-    <p class="font-bold text-lg mb-5 md:mb-0">
-      Pokémon TeamBuilder © 2025 - All rights reserved
-    </p>
-    <div class="text-center">
-      <p>Created by Manuel Soler Juan — Web Development Project</p>
+    <div>
+      <p class="font-bold text-lg mb-5 md:mb-0">
+        Pokémon TeamBuilder © 2025 - All rights reserved
+      </p>
+      <div class="text-center">
+        <p>Created by Manuel Soler Juan — Web Development Project</p>
 
-      <div class="flex flex-col items-center justify-center">
-        <a href="mailto:mansoljua@edu.alu.gva.es" class="link link-hover">{{
-          "mansoljua@edu.alu.gva.es"
-        }}</a>
-        <a
-          href="https://github.com/ManusolJ"
-          target="_blank"
-          class="link link-hover"
-          >GitHub: ManusolJ</a
-        >
+        <div class="flex flex-col items-center justify-center">
+          <a href="mailto:mansoljua@edu.alu.gva.es" class="link link-hover">{{
+            "mansoljua@edu.alu.gva.es"
+          }}</a>
+          <a
+            href="https://github.com/ManusolJ"
+            target="_blank"
+            class="link link-hover"
+            >GitHub: ManusolJ</a
+          >
+        </div>
+
+        <p class="text-sm">
+          <a routerLink="/about" class="link link-hover">About us</a>
+          <span> | </span>
+          <a routerLink="/terms" class="link link-hover">Terms of Use</a>
+        </p>
+
+        <p class="text-xs mt-2 max-w-md mx-auto">
+          This site is not affiliated with Nintendo, Game Freak, or The Pokémon
+          Company. Pokémon and related content are © of their respective owners.
+        </p>
       </div>
-
-      <p class="text-sm">
-        <a routerLink="/about" class="link link-hover">About us</a>
-        <span> | </span>
-        <a routerLink="/terms" class="link link-hover">Terms of Use</a>
-      </p>
-
-      <p class="text-xs mt-2 max-w-md mx-auto">
-        This site is not affiliated with Nintendo, Game Freak, or The Pokémon
-        Company. Pokémon and related content are © of their respective owners.
-      </p>
     </div>
   </div>
 </footer>

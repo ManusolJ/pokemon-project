@@ -1,7 +1,7 @@
 export const environment = {
   links: [
     {
-      link: '/',
+      link: '/home',
       name: 'Home',
     },
     {

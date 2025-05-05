@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { PokemonCardComponent } from "../pokemon-card/pokemon-card.component";
+import { TeamSlotComponent } from './team-slot/team-slot.component';
 
 @Component({
   selector: 'app-pokemon-team',
-  imports: [PokemonCardComponent],
+  imports: [TeamSlotComponent],
   templateUrl: './pokemon-team.component.html',
 })
-export class PokemonTeamComponent { }
+export class PokemonTeamComponent {}

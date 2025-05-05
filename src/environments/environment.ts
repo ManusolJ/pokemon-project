@@ -21,6 +21,4 @@ export const environment = {
       name: 'Community',
     },
   ],
-  imageLink:
-    'https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/showdown/',
 };

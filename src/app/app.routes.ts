@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/dashboard/dashboard.component'),
   },
   {
+    path: 'home',
+    loadComponent: () => import('./pages/dashboard/dashboard.component'),
+  },
+  {
     path: 'about',
     loadComponent: () => import('./pages/about/about.component'),
   },
@@ -15,12 +19,11 @@ export const routes: Routes = [
   },
   {
     path: 'team-builder',
-    loadComponent: () =>
-      import('./team/pages/builder-page/team-builder.component'),
+    loadChildren: () => import('./team/team.routes'),
   },
   {
     path: 'teams',
-    loadComponent: () => import('./team/pages/user-team/user-team.component'),
+    loadComponent: () => import('./pages/user-team/user-team.component'),
   },
   {
     path: 'pokedex',

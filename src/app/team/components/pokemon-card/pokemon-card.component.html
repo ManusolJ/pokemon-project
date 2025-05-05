@@ -1,26 +1,45 @@
-<div class="card bg-base-100 shadow-xl">
-  <div class="card-body relative">
-    <h2 class="card-title capitalize mx-auto">Test</h2>
-    <div class="flex flex-col items-center gap-3">
-      <img [src]="imageLink" alt="Pokemon sprite" class="w-24 h-24" />
-      <div class="flex gap-2">
-        <span
-          class="badge badge-lg badge-outline px-4 py-2 text-sm capitalize text-white font-bold bg-red-500"
-        >
-          Fire
-        </span>
-        <span
-          class="badge badge-lg badge-outline px-4 py-2 text-sm capitalize text-white font-bold bg-sky-500"
-        >
-          Flying
-        </span>
+<div class="h-full w-full flex gap-2 p-2 bg-base-100 rounded-lg">
+  <div class="w-4/5 relative bg-base-200 rounded-lg">
+    <img
+      src="assets/img/art/0.png"
+      alt="pokemon-sprite"
+      class="mx-auto h-3/4"
+    />
+    <div class="h-1/4 p-2">
+      <h2 class="card-title underline underline-offset-2">Pokemon Name</h2>
+      <div class="flex">
+        <p class="w-1/2 line-clamp-5">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eos
+          mollitia autem facere nobis sunt suscipit, quam natus voluptatum
+          obcaecati dolorem voluptatem delectus aliquid veritatis iste! Ullam
+          placeat quidem, officiis nobis libero nesciunt quia. Quaerat natus
+          officiis qui quae vero. Possimus sapiente tenetur asperiores
+          voluptatem quis ex atque quaerat voluptatibus.
+        </p>
       </div>
-      <div class="flex gap-4">
-        <button class="btn btn-primary btn-sm">Detailed view</button>
-        <button class="btn btn-error btn-sm">
-          <i class="fa-solid fa-trash"></i>
-        </button>
-      </div>
+    </div>
+  </div>
+  <div
+    class="w-1/5 flex flex-col gap-3 justify-between p-2 bg-base-200 rounded-lg"
+  >
+    <div
+      class="flex justify-center items-center gap-2 p-2 bg-base-100 rounded-lg"
+    >
+      <span class="badge badge-sm badge-soft badge-accent">Data</span>
+      <label class="label">
+        <input
+          type="checkbox"
+          class="toggle bg-indigo-500 checked:bg-indigo-500 text-white"
+        />
+      </label>
+      <span class="badge badge-sm badge-soft badge-accent">Moves</span>
+    </div>
+    <app-pokemon-data />
+    <div class="w-full p-2 bg-base-100 rounded-lg">
+      <button class="btn btn-error w-full text-white font-bold">
+        <span>Remove</span>
+        <i class="fa-solid fa-trash"></i>
+      </button>
     </div>
   </div>
 </div>

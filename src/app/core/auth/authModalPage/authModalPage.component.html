@@ -1,7 +1,7 @@
 <div
   class="bg-black w-screen h-screen fixed inset-0 z-40 transition-opacity duration-500 ease-in-out opacity-0"
   [ngClass]="{
-    'opacity-40': modalState(),
+    'opacity-50': modalState(),
     'opacity-0 pointer-events-none': !modalState()
   }"
   (click)="onClose(false)"
@@ -142,7 +142,7 @@
           class="btn btn-lg btn-accent transition-transform duration-200 hover:-translate-y-1"
           [disabled]="form.invalid"
         >
-          Login
+          {{ registerStatus() ? "Register" : "Login" }}
         </button>
       </div>
 
