@@ -1,45 +1,49 @@
-<div class="h-full w-full flex gap-2 p-2 bg-base-100 rounded-lg">
-  <div class="w-4/5 relative bg-base-200 rounded-lg">
+<div
+  class="h-full w-full flex gap-3 p-4 bg-base-100 rounded-lg shadow-md border-2 border-base-200"
+>
+  <div class="w-3/4 flex flex-col relative p-4 rounded-lg bg-base-200">
     <img
       src="assets/img/art/0.png"
       alt="pokemon-sprite"
-      class="mx-auto h-3/4"
+      class="h-3/4 mx-auto object-contain"
     />
-    <div class="h-1/4 p-2">
-      <h2 class="card-title underline underline-offset-2">Pokemon Name</h2>
-      <div class="flex">
-        <p class="w-1/2 line-clamp-5">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eos
-          mollitia autem facere nobis sunt suscipit, quam natus voluptatum
-          obcaecati dolorem voluptatem delectus aliquid veritatis iste! Ullam
-          placeat quidem, officiis nobis libero nesciunt quia. Quaerat natus
-          officiis qui quae vero. Possimus sapiente tenetur asperiores
-          voluptatem quis ex atque quaerat voluptatibus.
-        </p>
-      </div>
+    <div class="h-1/4 p-2 bg-base-100 rounded-lg">
+      <h2
+        class="text-2xl font-bold text-primary underline decoration-secondary"
+      >
+        Pokemon Name
+      </h2>
     </div>
   </div>
-  <div
-    class="w-1/5 flex flex-col gap-3 justify-between p-2 bg-base-200 rounded-lg"
-  >
-    <div
-      class="flex justify-center items-center gap-2 p-2 bg-base-100 rounded-lg"
+
+  <div class="w-1/4 flex flex-col gap-4 justify-between">
+    <div class="flex flex-col gap-4">
+      <div class="bg-base-200 rounded-lg p-2">
+        <div class="join join-horizontal w-full gap-0.5">
+          <button
+            class="join-item btn btn-sm btn-accent btn-outline w-1/2 hover:animate-pulse"
+            [class.btn-active]="isDataTabActive()"
+            (click)="changeDataTab()"
+          >
+            Data
+          </button>
+          <button
+            class="join-item btn btn-sm btn-secondary btn-outline w-1/2 hover:animate-pulse"
+            [class.btn-active]="!isDataTabActive()"
+            (click)="changeDataTab()"
+          >
+            Moves
+          </button>
+        </div>
+      </div>
+      <app-pokemon-data />
+    </div>
+
+    <button
+      class="btn btn-error btn-outline hover:btn-error w-full font-bold gap-2"
     >
-      <span class="badge badge-sm badge-soft badge-accent">Data</span>
-      <label class="label">
-        <input
-          type="checkbox"
-          class="toggle bg-indigo-500 checked:bg-indigo-500 text-white"
-        />
-      </label>
-      <span class="badge badge-sm badge-soft badge-accent">Moves</span>
-    </div>
-    <app-pokemon-data />
-    <div class="w-full p-2 bg-base-100 rounded-lg">
-      <button class="btn btn-error w-full text-white font-bold">
-        <span>Remove</span>
-        <i class="fa-solid fa-trash"></i>
-      </button>
-    </div>
+      <i class="fa-solid fa-trash"></i>
+      Remove
+    </button>
   </div>
 </div>

@@ -7,8 +7,8 @@ const teamRoutes: Routes = [
     loadChildren: () => [
       {
         path: '',
-        loadComponent: () =>
-          import('./pages/builder-page/builder-page.component'),
+        redirectTo: 'builder',
+        pathMatch: 'full',
       },
       {
         path: 'builder',
@@ -16,12 +16,13 @@ const teamRoutes: Routes = [
           import('./pages/builder-page/builder-page.component'),
       },
       {
-        path: 'stats',
-        loadComponent: () => import('./pages/stats-page/stats-page.component'),
+        path: 'analisis',
+        loadComponent: () =>
+          import('./pages/analisis-page/analisis-page.component'),
       },
       {
         path: '**',
-        redirectTo: '',
+        redirectTo: 'builder',
       },
     ],
   },

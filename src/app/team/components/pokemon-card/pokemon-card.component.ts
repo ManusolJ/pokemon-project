@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { PokemonDataComponent } from './pokemon-data/pokemon-data.component';
 
 @Component({
@@ -7,5 +7,9 @@ import { PokemonDataComponent } from './pokemon-data/pokemon-data.component';
   templateUrl: './pokemon-card.component.html',
 })
 export default class PokemonCardComponent {
-  tabLinkList = ['data', 'moves'];
+  isDataTabActive = signal(true);
+
+  changeDataTab() {
+    this.isDataTabActive.update((v) => !v);
+  }
 }

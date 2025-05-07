@@ -8,5 +8,5 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './team-layout.component.html',
 })
 export default class TeamLayoutComponent {
-  routes = ['builder', 'stats'];
+  routes = ['builder', 'analisis'];
 }
