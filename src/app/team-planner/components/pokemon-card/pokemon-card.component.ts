@@ -6,7 +6,7 @@ import { PokemonDataComponent } from './pokemon-data/pokemon-data.component';
   imports: [PokemonDataComponent],
   templateUrl: './pokemon-card.component.html',
 })
-export default class PokemonCardComponent {
+export class PokemonCardComponent {
   isDataTabActive = signal(true);
 
   changeDataTab() {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TabComponent } from '../../../components/tab/tab.component';
 import { RouterOutlet } from '@angular/router';
+import { TabComponent } from '@components/tab/tab.component';
 
 @Component({
   selector: 'app-team-layout',

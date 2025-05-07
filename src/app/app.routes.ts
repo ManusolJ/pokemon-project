@@ -20,7 +20,7 @@ export const routes: Routes = [
   },
   {
     path: 'team-builder',
-    loadChildren: () => import('./team/team.routes'),
+    loadChildren: () => import('./team-planner/team.routes'),
   },
   {
     path: 'teams',

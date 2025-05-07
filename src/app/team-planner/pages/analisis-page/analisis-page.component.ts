@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import PokemonCardComponent from '../../components/pokemon-card/pokemon-card.component';
-import { PokemonTeamComponent } from '../../components/pokemon-team/pokemon-team.component';
+import { PokemonCardComponent } from '@teamplanner/components/pokemon-card/pokemon-card.component';
+import { PokemonTeamComponent } from '@teamplanner/components/pokemon-team/pokemon-team.component';
 
 @Component({
   selector: 'app-analisis-page',

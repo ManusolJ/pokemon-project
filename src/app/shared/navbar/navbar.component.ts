@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { AuthModalPageComponent } from '@auth/authModalPage/authModalPage.component';
 import { NavbarMenuComponent } from './navbar-menu/navbar-menu.component';
 import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
 import { NavbarLogoComponent } from './navbar-logo/navbar-logo.component';
 import { NavbarAccountComponent } from './navbar-account/navbar-account.component';
-import { AuthModalPageComponent } from '@auth/authModalPage/authModalPage.component';
 
 @Component({
   selector: 'app-navbar',

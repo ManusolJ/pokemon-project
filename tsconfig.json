@@ -9,7 +9,9 @@
       "@interfaces/*": ["src/app/interfaces/*"],
       "@env/*": ["src/environments/*"],
       "@auth/*": ["src/app/core/auth/*"],
-      "@services/*": ["src/app/core/services/*"]
+      "@services/*": ["src/app/core/services/*"],
+      "@components/*": ["src/app/components/*"],
+      "@teamplanner/*": ["src/app/team-planner/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
