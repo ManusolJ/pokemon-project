@@ -5,24 +5,14 @@
     <app-navbar-logo />
   </div>
 
-  <div class="navbar-center hidden lg:flex">
-    <app-navbar-menu />
-  </div>
-
-  <div class="navbar-center flex lg:hidden">
-    <app-navbar-mobile-menu />
+  <div class="navbar-center">
+    <app-navbar-menu [linkList]="navLinks" />
   </div>
 
   <div class="navbar-end">
     <app-navbar-account
-      (openAuthModal)="openModal($event)"
-      [isChangingModal]="isChangingModal()"
+      (openAuthModal)="modifyModalState($event)"
+      [isModalOpen]="isModalOpen()"
     />
   </div>
 </nav>
-
-<app-auth-modal-page
-  [modalState]="modalState()"
-  [isRegisterModal]="isRegisterModal()"
-  (changeModal)="closeModal($event)"
-/>

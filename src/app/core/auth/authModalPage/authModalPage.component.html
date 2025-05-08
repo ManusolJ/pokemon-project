@@ -1,19 +1,23 @@
+<!-- Opaque Background -> Closes modal on click. -->
 <div
-  class="bg-black w-screen h-screen fixed inset-0 z-40 transition-opacity duration-500 ease-in-out opacity-0"
+  class="bg-black w-screen h-screen fixed inset-0 z-0 transition-opacity duration-500 ease-in-out"
   [ngClass]="{
-    'opacity-50': modalState(),
-    'opacity-0 pointer-events-none': !modalState()
+    'opacity-50': modalState() == 'login' || modalState() == 'register',
+    'opacity-0 pointer-events-none': modalState() == 'closed'
   }"
-  (click)="onClose(false)"
+  (click)="closeAuthModal('closed')"
 ></div>
 
+<!-- Auth Modal -->
 <div
-  class="card w-96 bg-base-100 shadow-2xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 transition-all duration-300 ease-out will-change-transform border-2 border-primary/20"
+  class="card w-96 bg-base-100 shadow-2xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-all duration-300 ease-out will-change-transform border-2 border-primary/20"
   [ngClass]="{
-    'scale-100 opacity-100': modalState(),
-    'scale-95 opacity-0 pointer-events-none': !modalState()
+    'scale-100 opacity-100':
+      modalState() == 'login' || modalState() == 'register',
+    'scale-80 opacity-0 pointer-events-none': modalState() == 'closed'
   }"
 >
+  <!-- Pokeball decoration -->
   <div class="relative">
     <div
       class="absolute -top-12 left-1/2 -translate-x-1/2 w-20 h-20 bg-red-600 rounded-full border-6 border-black shadow-lg overflow-hidden"
@@ -26,15 +30,17 @@
       ></div>
     </div>
 
+    <!-- Auth form -->
     <form
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
       class="card-body space-y-6 pt-16"
     >
+      <!-- Title -->
       <h2 class="text-3xl font-bold text-center font-press text-primary">
         Gotta Catch 'Em All!
       </h2>
-
+      <!-- Username Field-->
       <label class="form-control w-full">
         <div class="label">
           <span class="label-text text-lg font-semibold text-white"
@@ -57,41 +63,66 @@
         }
       </label>
 
+      <!-- Password Field -->
       <label class="form-control w-full">
         <div class="label">
-          <span class="label-text text-lg font-semibold text-white"
-            >Secret Code</span
-          >
+          <span class="label-text text-lg font-semibold text-white">
+            Secret Code
+          </span>
         </div>
-        <input
-          type="password"
-          formControlName="password"
-          placeholder="Password"
-          class="input input-lg input-bordered input-secondary w-full"
-        />
-        @if( form.get('password')?.invalid && form.get('password')?.touched){
+
+        <div class="relative w-full">
+          <input
+            [type]="isPasswordVisible() ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="Password"
+            class="input input-lg input-bordered input-secondary w-full pr-12"
+          />
+          <i
+            class="fa-solid absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+            (click)="showPassword(true)"
+            [ngClass]="{
+              'fa-eye': !isPasswordVisible(),
+              'fa-eye-slash': isPasswordVisible()
+            }"
+          ></i>
+        </div>
+
+        @if (form.get('password')?.invalid && form.get('password')?.touched) {
         <div class="label">
           <span class="label-text-alt text-error font-bold animate-pulse">
-            <i class="fa-solid fa-exclamation-circle mr-1"></i>6+ characters
-            required!
+            <i class="fa-solid fa-exclamation-circle mr-1"></i>
+            6+ characters required!
           </span>
         </div>
         }
       </label>
 
-      @if(registerStatus()){
+      <!-- If called from register -->
+      @if(renderField()){
+      <!-- Confirm Password Field -->
       <label class="form-control w-full">
         <div class="label">
           <span class="label-text text-lg font-semibold text-white"
-            >Secret Code</span
+            >Confirm Secret Code</span
           >
         </div>
-        <input
-          type="password"
-          formControlName="confirmPassword"
-          placeholder="Confirm your password"
-          class="input input-lg input-bordered input-secondary w-full"
-        />
+        <div class="relative w-full">
+          <input
+            [type]="isConfirmPasswordVisible() ? 'text' : 'password'"
+            formControlName="confirmPassword"
+            placeholder="Confirm your password"
+            class="input input-lg input-bordered input-secondary w-full pr-12"
+          />
+          <i
+            class="fa-solid fa-eye absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+            (click)="showPassword(false)"
+            [ngClass]="{
+              'fa-eye': !isConfirmPasswordVisible(),
+              'fa-eye-slash': isConfirmPasswordVisible()
+            }"
+          ></i>
+        </div>
         @if( form.get('confirmPassword')?.invalid &&
         form.get('confirmPassword')?.touched){
         <div class="label">
@@ -104,13 +135,14 @@
       </label>
       }
 
+      <!-- Form Actions -->
       <div class="card-actions justify-between mt-6">
         <div class="flex flex-col group">
-          @if(!registerStatus()){
+          @if(modalState() == 'login'){
           <span class="text-sm text-white font-semibold">New Trainer?</span>
           <span
             class="flex items-center gap-2 cursor-pointer text-primary"
-            (click)="onClose(true)"
+            (click)="changeModal()"
           >
             <i
               class="fa-solid fa-arrow-left-long transition-transform group-hover:-translate-x-1"
@@ -119,13 +151,13 @@
               >Start Journey!</span
             >
           </span>
-          }@else{
+          } @if(modalState() == 'register'){
           <span class="text-sm text-white font-semibold"
             >Already registered?</span
           >
           <span
             class="flex items-center gap-2 cursor-pointer text-primary"
-            (click)="onClose(true)"
+            (click)="changeModal()"
           >
             <span class="font-bold underline-offset-4 hover:underline"
               >Get Started!</span
@@ -142,14 +174,14 @@
           class="btn btn-lg btn-accent transition-transform duration-200 hover:-translate-y-1"
           [disabled]="form.invalid"
         >
-          {{ registerStatus() ? "Register" : "Login" }}
+          {{ modalState() == "register" ? "Register" : "Login" }}
         </button>
       </div>
 
       <button
         type="button"
         class="btn btn-secondary btn-sm absolute top-4 right-4"
-        (click)="onClose(false)"
+        (click)="closeAuthModal('closed')"
       >
         <i class="fa-solid fa-xmark fa-lg"></i>
       </button>

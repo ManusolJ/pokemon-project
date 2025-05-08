@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { environment } from '@env/environment';
+
+import type NavLink from '@interfaces/nav-link.interface';
 
 @Component({
   selector: 'app-navbar-menu',
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar-menu.component.html',
 })
-export class NavbarMenuComponent {
-  links = environment.links;
+export default class NavbarMenuComponent {
+  linkList = input.required<NavLink[]>();
+  isMenuDisplayed = signal<boolean>(false);
+
+  displayMenu() {
+    this.isMenuDisplayed.update((v) => !v);
+  }
 }

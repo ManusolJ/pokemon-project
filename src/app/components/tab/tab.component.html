@@ -1,7 +1,12 @@
 <div role="tablist" class="tabs tabs-border bg-base-100">
-  @for(link of tabLinkList(); track $index){
-  <a [routerLink]="[link]" routerLinkActive="tab-active" role="tab" class="tab">
-    {{ link }}
+  @for(item of tabLinkList(); track $index){
+  <a
+    [routerLink]="[item.path]"
+    routerLinkActive="tab-active"
+    role="tab"
+    class="tab"
+  >
+    {{ item.name }}
   </a>
   }
 </div>

@@ -1,17 +1,19 @@
 <div class="gap-2 hidden lg:flex">
   <button
     class="btn btn-accent text-xs transition-transform duration-200 hover:-translate-y-0.5 w-1/2"
-    (click)="openAuthModal.emit(true)"
-    [class.pointer-events-none]="isChangingModal()"
+    (click)="openRegisterModal()"
+    [class.pointer-events-none]="isModalOpen()"
   >
-    Sign Up
+    <i class="fa-solid fa-pen-to-square mt-0.5"></i>
+    <span class="font-bold">Sign up</span>
   </button>
   <button
     class="btn btn-error transition-transform duration-200 hover:-translate-y-0.5 w-1/2"
-    (click)="openAuthModal.emit(false)"
-    [class.pointer-events-none]="isChangingModal()"
+    (click)="openLoginModal()"
+    [class.pointer-events-none]="isModalOpen()"
   >
-    Login
+    <i class="fa-solid fa-right-to-bracket mt-0.5"></i>
+    <span class="font-bold">Login</span>
   </button>
 </div>
 
@@ -30,19 +32,21 @@
     <li>
       <button
         class="btn btn-accent btn-sm"
-        (click)="openAuthModal.emit(true)"
-        [class.pointer-events-none]="isChangingModal()"
+        (click)="openRegisterModal()"
+        [class.pointer-events-none]="isModalOpen()"
       >
-        Sign Up
+        <i class="fa-solid fa-pen-to-square mt-0.5"></i>
+        <span class="font-bold">Sign up</span>
       </button>
     </li>
     <li>
       <button
         class="btn btn-error btn-sm"
-        (click)="openAuthModal.emit(false)"
-        [class.pointer-events-none]="isChangingModal()"
+        (click)="openLoginModal()"
+        [class.pointer-events-none]="isModalOpen()"
       >
-        Login
+        <i class="fa-solid fa-right-to-bracket mt-0.5"></i>
+        <span class="font-bold">Login</span>
       </button>
     </li>
   </ul>

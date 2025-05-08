@@ -1,0 +1,37 @@
+<div
+  class="grid grid-cols-12 gap-2 items-center group hover:bg-base-300 p-1 rounded-lg transition-colors"
+>
+  <div class="col-span-3 flex items-center gap-2">
+    <span class="badge capitalize" [ngClass]="badgeClassValue[statName()]">{{
+      statNameValue[statName()]
+    }}</span>
+  </div>
+  <div class="col-span-2 text-center">{{ baseValue() }}</div>
+  <div class="col-span-3 flex items-center gap-2">
+    <input
+      type="range"
+      min="0"
+      max="252"
+      value="0"
+      class="range range-xs transition-all"
+      (drag)="rangeChange()"
+    />
+    <input
+      type="number"
+      class="input input-xs w-16 text-center"
+      value="0"
+      min="0"
+      max="252"
+    />
+  </div>
+  <div class="col-span-2 text-center">
+    <input
+      type="number"
+      class="input input-xs w-16 text-center"
+      value="31"
+      min="0"
+      max="31"
+    />
+  </div>
+  <div class="col-span-2 text-center font-mono text-primary">218</div>
+</div>

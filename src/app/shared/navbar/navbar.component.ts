@@ -1,42 +1,42 @@
-import { Component, signal } from '@angular/core';
-import { AuthModalPageComponent } from '@auth/authModalPage/authModalPage.component';
-import { NavbarMenuComponent } from './navbar-menu/navbar-menu.component';
-import { NavbarMobileMenuComponent } from './navbar-mobile-menu/navbar-mobile-menu.component';
-import { NavbarLogoComponent } from './navbar-logo/navbar-logo.component';
-import { NavbarAccountComponent } from './navbar-account/navbar-account.component';
+import { Component, computed, inject } from '@angular/core';
+
+import type NavLink from '@interfaces/nav-link.interface';
+import type { AuthModalState } from '@interfaces/auth-modal-state.interface';
+
+import NavbarMenuComponent from './navbar-menu/navbar-menu.component';
+import NavbarLogoComponent from './navbar-logo/navbar-logo.component';
+import NavbarAccountComponent from './navbar-account/navbar-account.component';
+import { ModalService } from '@services/modal.service';
 
 @Component({
   selector: 'app-navbar',
-  imports: [
-    NavbarMenuComponent,
-    NavbarLogoComponent,
-    NavbarAccountComponent,
-    NavbarMobileMenuComponent,
-    AuthModalPageComponent,
-  ],
+  imports: [NavbarMenuComponent, NavbarLogoComponent, NavbarAccountComponent],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  isRegisterModal = signal(true);
-  isChangingModal = signal(false);
-  modalState = signal(false);
+  modalService = inject(ModalService);
+  isModalOpen = computed(() => this.modalService.authModalState() !== 'closed');
 
-  openModal(isRegister: boolean) {
-    this.isRegisterModal.set(isRegister);
-    this.modalState.set(true);
-  }
+  navLinks: NavLink[] = [
+    {
+      path: '/team-builder',
+      name: 'Team Builder',
+    },
+    {
+      path: '/teams',
+      name: 'Teams',
+    },
+    {
+      path: '/pokedex',
+      name: 'Pokedex',
+    },
+    {
+      path: '/community',
+      name: 'Community',
+    },
+  ];
 
-  closeModal(isChange: boolean) {
-    if (isChange) {
-      this.isChangingModal.set(true);
-      this.modalState.set(false);
-      setTimeout(() => {
-        this.isRegisterModal.update((v) => !v);
-        this.modalState.set(true);
-        this.isChangingModal.set(false);
-      }, 550);
-    } else {
-      this.modalState.set(false);
-    }
+  modifyModalState(authModalType: AuthModalState) {
+    this.modalService.modifyAuthModal(authModalType);
   }
 }

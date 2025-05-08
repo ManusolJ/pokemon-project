@@ -1,15 +1,19 @@
-import { Component, signal } from '@angular/core';
-import { PokemonDataComponent } from './pokemon-data/pokemon-data.component';
+import { Component, input, signal } from '@angular/core';
+import PokemonDataComponent from './pokemon-data/pokemon-data.component';
+import PokemonMovesComponent from './pokemon-moves/pokemon-moves.component';
 
 @Component({
   selector: 'app-pokemon-card',
-  imports: [PokemonDataComponent],
+  imports: [PokemonDataComponent, PokemonMovesComponent],
   templateUrl: './pokemon-card.component.html',
 })
-export class PokemonCardComponent {
+export default class PokemonCardComponent {
+  pokemonName = input<string>('Pokemon');
+  pokemonImage = input<string>('assets/img/art/0.png');
+
   isDataTabActive = signal(true);
 
-  changeDataTab() {
-    this.isDataTabActive.update((v) => !v);
+  changeDataTab(state: boolean) {
+    this.isDataTabActive.update(() => state);
   }
 }

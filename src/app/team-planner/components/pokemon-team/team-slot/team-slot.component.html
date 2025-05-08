@@ -1,5 +1,5 @@
 <div
-  class="group bg-base-100 rounded-xl p-3 shadow-sm hover:shadow-md transition-shadow relative border-2 border-base-200 hover:border-primary"
+  class="group bg-base-100 rounded-lg p-2 shadow-sm hover:shadow-md transition-shadow relative border-2 border-base-200 hover:border-primary h-full"
 >
   <div class="absolute -top-2 -right-2">
     <button
@@ -10,7 +10,8 @@
   </div>
 
   <div
-    class="h-24 flex items-center justify-center bg-base-200 rounded-lg mb-2 hover:bg-primary/10 cursor-pointer transition-colors"
+    class="h-1/2 flex items-center justify-center bg-base-200 rounded-lg mb-2 hover:bg-primary/10 cursor-pointer transition-colors"
+    (click)="openPokemonSelection.emit(index())"
   >
     <i
       class="fa-solid fa-plus text-3xl text-white group-hover:text-primary"
@@ -18,7 +19,7 @@
   </div>
 
   @if(pokemon()) {
-  <div class="text-center space-y-2">
+  <div class="text-center h-1/2 flex flex-col justify-between pb-3">
     <p class="font-bold text-primary">Pokemon Name</p>
     <div class="flex gap-1 justify-center">
       <span class="badge badge-primary">Type 1</span>

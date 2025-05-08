@@ -3,20 +3,8 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'team-builder',
     pathMatch: 'full',
-  },
-  {
-    path: 'home',
-    loadComponent: () => import('./pages/dashboard/dashboard.component'),
-  },
-  {
-    path: 'about',
-    loadComponent: () => import('./pages/about/about.component'),
-  },
-  {
-    path: 'terms',
-    loadComponent: () => import('./pages/terms/terms.component'),
   },
   {
     path: 'team-builder',
@@ -35,7 +23,15 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/community/community.component'),
   },
   {
+    path: 'about',
+    loadComponent: () => import('./pages/about/about.component'),
+  },
+  {
+    path: 'terms',
+    loadComponent: () => import('./pages/terms/terms.component'),
+  },
+  {
     path: '**',
-    redirectTo: 'home',
+    redirectTo: 'team-builder',
   },
 ];

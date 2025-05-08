@@ -1,1 +1,65 @@
-<p>pokemon-stats works!</p>,
+<div class="flex flex-col gap-4 p-2 bg-base-200 rounded-lg shadow-md">
+  <div
+    class="grid grid-cols-12 gap-2 items-center pb-2 px-2 border-b-2 border-base-300"
+  >
+    <div class="col-span-3 font-bold text-primary">Stat</div>
+    <div class="col-span-2 text-center text-sm font-semibold">Base</div>
+    <div class="col-span-3 text-center text-sm font-semibold">EVs (0-252)</div>
+    <div class="col-span-2 text-center text-sm font-semibold">IVs (0-31)</div>
+    <div class="col-span-2 text-center text-sm font-semibold">Total</div>
+  </div>
+
+  <div
+    class="grid grid-cols-12 gap-2 items-center group hover:bg-base-300 p-1 rounded-lg transition-colors"
+  >
+    <div class="col-span-3 flex items-center gap-2">
+      <span class="badge badge-warning">Attack</span>
+    </div>
+    <div class="col-span-2 text-center font-mono">110</div>
+    <div class="col-span-3 flex items-center gap-2">
+      <input
+        type="range"
+        min="0"
+        max="252"
+        value="0"
+        class="range range-warning range-xs transition-all"
+      />
+      <input
+        type="number"
+        class="input input-xs w-16 text-center"
+        value="0"
+        min="0"
+        max="252"
+      />
+    </div>
+    <div class="col-span-2 text-center">
+      <input
+        type="number"
+        class="input input-xs w-16 text-center"
+        value="31"
+        min="0"
+        max="31"
+      />
+    </div>
+    <div class="col-span-2 text-center font-mono text-primary">350</div>
+  </div>
+
+  <!-- Repeat for other stats with appropriate colors:
+       Defense (badge-info/blue)
+       Sp. Atk (badge-secondary/purple)
+       Sp. Def (badge-success/green)
+       Speed (badge-accent/teal) -->
+
+  <!-- EV Total Counter -->
+  <div
+    class="pt-4 border-t-2 border-base-300 flex justify-between items-center"
+  >
+    <div class="text-sm font-semibold">
+      EVs Used: <span class="font-mono">0</span>/510
+    </div>
+    <button class="btn btn-sm btn-ghost text-error">
+      <i class="fa-solid fa-rotate-left"></i>
+      Reset EVs
+    </button>
+  </div>
+</div>

@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './pokemon-stats.component.html',
 })
-export class PokemonStatsComponent { }
+export default class PokemonStatsComponent {}

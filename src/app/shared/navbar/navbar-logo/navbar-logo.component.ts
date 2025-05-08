@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './navbar-logo.component.html',
 })
-export class NavbarLogoComponent { }
+export default class NavbarLogoComponent {}

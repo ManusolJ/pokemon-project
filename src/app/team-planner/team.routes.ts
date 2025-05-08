@@ -3,7 +3,8 @@ import { Routes } from '@angular/router';
 const teamRoutes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./layouts/team-layout/team-layout.component'),
+    loadComponent: () =>
+      import('./layouts/planner-layout/planner-layout.component'),
     loadChildren: () => [
       {
         path: '',
